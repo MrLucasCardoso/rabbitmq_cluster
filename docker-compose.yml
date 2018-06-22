@@ -59,6 +59,7 @@ services:
     hostname: haproxy
     ports:
       - 5672:5672
+      - 15672:15672
       - 20000:20000
     network_mode: "bridge"
     links:
