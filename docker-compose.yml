@@ -9,11 +9,7 @@ services:
     network_mode: "bridge"
     volumes:
      - $PWD/storage/rabbitmq1:/var/lib/rabbitmq
-    environment:
-     - RABBITMQ_ERLANG_COOKIE=This_is_my_secret_phrase
-     - RABBITMQ_DEFAULT_USER=mqadmin
-     - RABBITMQ_DEFAULT_PASS=Admin123XX_
-     - CLUSTERED=true
+    env_file: .env
 
   rabbitmq2:
     image: rabbitmq:3-management-alpine
@@ -24,11 +20,7 @@ services:
     network_mode: "bridge"
     volumes:
      - $PWD/storage/rabbitmq2:/var/lib/rabbitmq
-    environment:
-     - RABBITMQ_ERLANG_COOKIE=This_is_my_secret_phrase
-     - RABBITMQ_DEFAULT_USER=mqadmin
-     - RABBITMQ_DEFAULT_PASS=Admin123XX_
-     - CLUSTERED=true
+    env_file: .env
     links:
      - rabbitmq1:rabbitmq1
 
@@ -41,11 +33,7 @@ services:
     network_mode: "bridge"
     volumes:
       - $PWD/storage/rabbitmq3:/var/lib/rabbitmq
-    environment:
-     - RABBITMQ_ERLANG_COOKIE=This_is_my_secret_phrase
-     - RABBITMQ_DEFAULT_USER=mqadmin
-     - RABBITMQ_DEFAULT_PASS=Admin123XX_
-     - CLUSTERED=true
+    env_file: .env
     links:
      - rabbitmq1:rabbitmq1
      - rabbitmq2:rabbitmq2
@@ -59,11 +47,7 @@ services:
     network_mode: "bridge"
     volumes:
       - $PWD/storage/rabbitmq4:/var/lib/rabbitmq
-    environment:
-     - RABBITMQ_ERLANG_COOKIE=This_is_my_secret_phrase
-     - RABBITMQ_DEFAULT_USER=mqadmin
-     - RABBITMQ_DEFAULT_PASS=Admin123XX_
-     - CLUSTERED=true
+    env_file: .env
     links:
      - rabbitmq1:rabbitmq1
      - rabbitmq2:rabbitmq2
